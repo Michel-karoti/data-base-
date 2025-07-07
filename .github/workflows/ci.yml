@@ -7,7 +7,7 @@ on:
     branches: [main, dev]
 
 jobs:
-  build-test:
+  build-and-test:
     runs-on: ubuntu-latest
 
     services:
@@ -35,8 +35,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: 🧪 Lancer les tests Maven
-        run: ./mvnw clean verify
+      - name: 🧪 Lancer les tests Maven (sans ./mvnw)
+        run: mvn clean verify
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/devchat
           SPRING_DATASOURCE_USERNAME: user
